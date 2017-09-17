@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1988831263098760}
+  m_IsPrefabParent: 1
+--- !u!1 &1988831263098760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4285145334719120}
+  - component: {fileID: 33100277236009390}
+  - component: {fileID: 23876061444089882}
+  - component: {fileID: 95266170899245098}
+  - component: {fileID: 114051447137070532}
+  m_Layer: 0
+  m_Name: Chess Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4285145334719120
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 21.1, y: -0, z: 21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23876061444089882
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7fa5e49a1c8d24745afd7dac8a2bf35f, type: 2}
+  - {fileID: 2100000, guid: c5169520859970d428b8739a580795ac, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33100277236009390
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Mesh: {fileID: 4300000, guid: 1041835f7d60453459994b765b944445, type: 3}
+--- !u!95 &95266170899245098
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 1041835f7d60453459994b765b944445, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114051447137070532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14815d128c1a5a64bb50c00c2ae5b9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteKing: {fileID: 1905895690539310, guid: 894857c2ab40e1048850ccb05bdff858, type: 2}
+  whiteQueen: {fileID: 1909025293120476, guid: 53ba61c6d452b744f9459ec1561ee969, type: 2}
+  whiteBishop: {fileID: 1803685328589360, guid: 9bff44a386f0f4640b994c38c750aede,
+    type: 2}
+  whiteKnight: {fileID: 1730261060605372, guid: eca2894e2f1d56f47a8553cdb5ab9555,
+    type: 2}
+  whiteRook: {fileID: 1059458315426444, guid: a2bdeb5376e10924fa569996e564fcf1, type: 2}
+  whitePawn: {fileID: 1006429195631998, guid: 2177256f523a6dc4aabcd618cda3b903, type: 2}
+  blackKing: {fileID: 1752566234709160, guid: 5e480df69697e714b9d3778ac2b757de, type: 2}
+  blackQueen: {fileID: 1881424046310268, guid: 829fdcc215f627e4db4a2119ddce240b, type: 2}
+  blackBishop: {fileID: 1395674291036980, guid: a14d15646ec551a4d9167839b69cec3b,
+    type: 2}
+  blackKnight: {fileID: 1094178418106622, guid: 71fdcd557ee966c42b1d848dc64114b6,
+    type: 2}
+  blackRook: {fileID: 1016572730181752, guid: 56c15cd22784d0b4c9aeace8c1ba7783, type: 2}
+  blackPawn: {fileID: 1060468728924604, guid: 6823d1302e972a94a91054416dbc4062, type: 2}

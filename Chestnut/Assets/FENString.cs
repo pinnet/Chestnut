@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class FENString {
 
-    const string CN = "KQkq-";
+    const string CN  = "KQkq-";
     const string SAN = "KQBNRPkqbnrp-";
-    const string MN = "ABCDEFGHabcdefgh12345678x=()0O";
-    const string EN = "abcdefgh12345678-";
+    const string MN  = "ABCDEFGHabcdefgh12345678x=()0O";
+    const string EN  = "abcdefgh12345678-";
+    const int FENWORDS = 6;
 
-    protected int FENWORDS = 13;
+    protected int[,] _board = new int[8, 8];
     protected string _FEN = "";
     protected string _ENP = "";
     protected int _HMC = 0;
@@ -19,6 +20,8 @@ public class FENString {
     protected bool _wccks = false;
     protected bool _bccqs = false;
     protected bool _bccks = false;
+    protected bool _BlackKing = false;
+    protected bool _WhiteKing = false;
 
     public FENString(string FEN) {
 
@@ -86,6 +89,15 @@ public class FENString {
         }
 
     }
+    public int[,] Board
+    {
+
+        get
+        {
+            return _board;
+        }
+
+    }
 
     public int HalfMoveClock
     {
@@ -108,50 +120,56 @@ public class FENString {
 
         if (fenWords.Length != FENWORDS) return false;
 
+        String[] boardRanks = fenWords[(int)FEN.Ranks].Split('/');
+
         for (int i = 0; i < 8; i++)
         {
-            if (!checkSquares(fenWords[i])) return false;
+            if (!CheckSquares(boardRanks[i], i)) return false;
         }
+
+        if (!_WhiteKing || !_BlackKing) return false;
 
         if (fenWords[(int)FEN.Player] != "w" && fenWords[(int)FEN.Player] != "b") return false;
 
         _isWhiteMove = (fenWords[(int)FEN.Player] == "w") ? true : false;
        
-        if (!checkCastle(fenWords[(int)FEN.Castle])) return false;
+        if (!CheckCastle(fenWords[(int)FEN.Castle])) return false;
 
-        if (!checkEnPesant(fenWords[(int)FEN.Enpeasant])) return false;
+        if (!CheckEnPesant(fenWords[(int)FEN.Enpeasant])) return false;
 
-        if (!checkHalfMoveClock(fenWords[(int)FEN.HalfMove])) return false;
+        if (!CheckHalfMoveClock(fenWords[(int)FEN.HalfMove])) return false;
 
-        if (!checkFullMoveNumber(fenWords[(int)FEN.FullMove])) return false;
+        if (!CheckFullMoveNumber(fenWords[(int)FEN.FullMove])) return false;
 
         return true;
 
     }
 
-    private bool checkHalfMoveClock(string halfMoveClock)
+    private bool CheckHalfMoveClock(string halfMoveClock)
     {
 
         if (!Int32.TryParse(halfMoveClock, out _HMC)) return false;
         return true;
     }
 
-    private bool checkFullMoveNumber(string fullMoveNumber)
+    private bool CheckFullMoveNumber(string fullMoveNumber)
     {
         if (!Int32.TryParse(fullMoveNumber, out _FMN)) return false;
         return true;
     }
-    private bool checkEnPesant(string enPesant)
+    private bool CheckEnPesant(string enPesant)
     {
-
-        if (!EN.Contains(enPesant)) return false;
         if (enPesant.Contains("-")) return true;
+        for (int i = 0; i < enPesant.Length; i++)
+        {
+            if (!EN.Contains(enPesant[i].ToString())) return false;
+        }
         if (enPesant.Length != 2) return false;
         _ENP = enPesant;
         return true;
     }
 
-    private bool checkCastle(string castle)
+    private bool CheckCastle(string castle)
     {
 
         if (!CN.Contains(castle)) return false;
@@ -179,34 +197,53 @@ public class FENString {
         return true;
     }
 
-    private bool checkSquares(string rank)
+    private bool CheckSquares(string rankString,int rankNumber)
     {
-        int Squares = 0;
+        int numberOfEmpty,squaresCount = 0;
+
+        int rank = 7 - rankNumber;
         char buff;
         
-        for (int i = 0; i < rank.Length; i++) {
+        for (int i = 0; i < rankString.Length; i++) {
 
-            buff = rank[i];
+            buff = rankString[i];
+
+
 
             if (Char.IsNumber(buff))
             {
-                Squares += ((int)buff - 48);
+                numberOfEmpty = Int32.Parse(buff.ToString());
+
+                for (int f = squaresCount; f < numberOfEmpty; f++) { 
+                    _board[rank,f] = 0; }
+
+                squaresCount += numberOfEmpty;
             }
             else {
+                 if (!SAN.Contains(buff.ToString())) return false;
 
+                if (buff == 'K')
+                {
+                    if (_WhiteKing) return false;
+                    _WhiteKing = true;
+                }
+                if (buff == 'k')
+                {
+                    if (_BlackKing) return false;
+                    _BlackKing = true;
+                }
 
-                if (!SAN.Contains(buff + "")) return false;
-                Squares++;
-
+                _board[rank, squaresCount] = buff;
+                squaresCount++;
+                    
             }
         }
-        return (Squares == 8);
+        return (squaresCount == 8);
     }
 
-    public enum FEN
+    public enum FEN : int
     {
-        Rank1,Rank2,Rank3,Rank4,Rank5,Rank6,Rank7,Rank8,
-        Player,Castle,Enpeasant,HalfMove,FullMove
+        Ranks,Player,Castle,Enpeasant,HalfMove,FullMove
     }
     
 }
