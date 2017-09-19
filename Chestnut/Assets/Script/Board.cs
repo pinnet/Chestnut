@@ -36,7 +36,7 @@ public class Board : MonoBehaviour {
     GameObject blackQuad;
 
     private List<FENString> Moves = new List<FENString>();
-
+    private const string _ranks = "abcdefgh";
     private bool _moved = false;
     private bool _startWhite = false;
     private bool _flipflop = true;
@@ -55,24 +55,29 @@ public class Board : MonoBehaviour {
 
     private void SetupBoard(int[,] board)
     {
-       
-
+        
         for (int r = 0; r < 8; r++) {
 
             
             for (int f = 0; f < 8; f ++) {
 
                 if (_flipflop)
-                    Instantiate(whiteQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f,0f,0f));
+                {
+                    GameObject go = Instantiate(whiteQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
+                    go.tag = _ranks[r] + (f + 1).ToString();
+                }
                 else
-                    Instantiate(blackQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
-
+                {
+                    GameObject go = Instantiate(blackQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
+                    go.tag = _ranks[r] + (f + 1).ToString();
+                }
                 _flipflop = !_flipflop;
 
                 switch ((char)board[r, f])
                {
                     case 'K':
                         Instantiate(whiteKing,new Vector3(f * 6,0,r *6), Quaternion.identity);
+                       
                     break;
                     case 'Q':
                         Instantiate(whiteQueen, new Vector3(f * 6, 0, r * 6), Quaternion.identity);

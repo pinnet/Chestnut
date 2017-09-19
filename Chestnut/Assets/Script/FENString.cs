@@ -215,7 +215,7 @@ public class FENString {
                 numberOfEmpty = Int32.Parse(buff.ToString());
 
                 for (int f = squaresCount; f < numberOfEmpty; f++) { 
-                    _board[rank,f] = 0; }
+                    _board[rank,7 - f] = 0; }
 
                 squaresCount += numberOfEmpty;
             }
@@ -233,7 +233,7 @@ public class FENString {
                     _BlackKing = true;
                 }
 
-                _board[rank, squaresCount] = buff;
+                _board[rank, 7 - squaresCount] = buff;
                 squaresCount++;
                     
             }
