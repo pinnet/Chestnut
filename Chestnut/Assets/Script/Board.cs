@@ -30,12 +30,16 @@ public class Board : MonoBehaviour {
     GameObject blackRook;
     [SerializeField]
     GameObject blackPawn;
-
+    [SerializeField]
+    GameObject whiteQuad;
+    [SerializeField]
+    GameObject blackQuad;
 
     private List<FENString> Moves = new List<FENString>();
 
     private bool _moved = false;
-
+    private bool _startWhite = false;
+    private bool _flipflop = true;
 
     // Use this for initialization
 
@@ -55,10 +59,17 @@ public class Board : MonoBehaviour {
 
         for (int r = 0; r < 8; r++) {
 
+            
             for (int f = 0; f < 8; f ++) {
 
+                if (_flipflop)
+                    Instantiate(whiteQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f,0f,0f));
+                else
+                    Instantiate(blackQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
 
-               switch ((char)board[r, f])
+                _flipflop = !_flipflop;
+
+                switch ((char)board[r, f])
                {
                     case 'K':
                         Instantiate(whiteKing,new Vector3(f * 6,0,r *6), Quaternion.identity);
@@ -99,7 +110,9 @@ public class Board : MonoBehaviour {
                 }
              }
 
-
+            if (_startWhite) _flipflop = true;
+            else _flipflop = false;
+            _startWhite = !_startWhite;
         }
     }
 

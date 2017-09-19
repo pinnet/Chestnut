@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988831263098760}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 21, y: -0, z: 21}
+  m_LocalPosition: {x: 21, y: -0.001, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,3 +127,5 @@ MonoBehaviour:
     type: 2}
   blackRook: {fileID: 1016572730181752, guid: 56c15cd22784d0b4c9aeace8c1ba7783, type: 2}
   blackPawn: {fileID: 1060468728924604, guid: 6823d1302e972a94a91054416dbc4062, type: 2}
+  whiteQuad: {fileID: 1973600864346216, guid: 045dc20d35ce11042ade11ab8b834266, type: 2}
+  blackQuad: {fileID: 1667078235858308, guid: f69f9125ef066d241aa6d05b69a41d1e, type: 2}
