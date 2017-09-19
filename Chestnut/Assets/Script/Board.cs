@@ -58,62 +58,89 @@ public class Board : MonoBehaviour {
         
         for (int r = 0; r < 8; r++) {
 
-            
+            GameObject square;
+
             for (int f = 0; f < 8; f ++) {
+
+                square = new GameObject(_ranks[r] + (f + 1).ToString());
+                square.transform.position = new Vector3(6f * f, 0f, 6f * r);
+                square.transform.parent = transform;
 
                 if (_flipflop)
                 {
-                    GameObject go = Instantiate(whiteQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
-                    go.tag = _ranks[r] + (f + 1).ToString();
+                   Instantiate(whiteQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f)).transform.parent = square.transform;
+                    
                 }
                 else
                 {
-                    GameObject go = Instantiate(blackQuad, new Vector3(f * 6, 0, r * 6), Quaternion.Euler(90f, 0f, 0f));
-                    go.tag = _ranks[r] + (f + 1).ToString();
+                    Instantiate(blackQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f)).transform.parent = square.transform; 
+                   
                 }
                 _flipflop = !_flipflop;
-
+                
+                GameObject piece;
                 switch ((char)board[r, f])
                {
                     case 'K':
-                        Instantiate(whiteKing,new Vector3(f * 6,0,r *6), Quaternion.identity);
-                       
-                    break;
+                        piece = Instantiate(whiteKing,Vector3.zero, Quaternion.identity);
+                        piece.name = "White King";
+                        break;
                     case 'Q':
-                        Instantiate(whiteQueen, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(whiteQueen, Vector3.zero, Quaternion.identity);
+                        piece.name = "White Queen";
                         break;
                     case 'B':
-                        Instantiate(whiteBishop, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(whiteBishop, Vector3.zero, Quaternion.identity);
+                        piece.name = "White Bishop";
                         break;
                     case 'N':
-                        Instantiate(whiteKnight, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(whiteKnight,Vector3.zero, Quaternion.identity);
+                        piece.name = "White Knight";
                         break;
                     case 'R':
-                        Instantiate(whiteRook, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(whiteRook,Vector3.zero, Quaternion.identity);
+                        piece.name = "White Rook";
                         break;
                     case 'P':
-                        Instantiate(whitePawn, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(whitePawn,Vector3.zero, Quaternion.identity);
+                        piece.name = "White Pawn";
                         break;
                     case 'k':
-                        Instantiate(blackKing, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackKing,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black King";
                         break;
                     case 'q':
-                        Instantiate(blackQueen, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackQueen,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black Queen";
                         break;
                     case 'b':
-                        Instantiate(blackBishop, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackBishop,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black Bishop";
                         break;
                     case 'n':
-                        Instantiate(blackKnight, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackKnight,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black Knight";
                         break;
                     case 'r':
-                        Instantiate(blackRook, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackRook,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black Rook";
                         break;
                     case 'p':
-                        Instantiate(blackPawn, new Vector3(f * 6, 0, r * 6), Quaternion.identity);
+                        piece = Instantiate(blackPawn,Vector3.zero, Quaternion.identity);
+                        piece.name = "Black Pawn";
+                        break;
+                    default :
+                        piece = new GameObject("Empty");
+                        piece.transform.rotation = Quaternion.identity;
                         break;
                 }
-             }
+                
+                piece.transform.parent = square.transform;
+
+
+                piece.transform.localPosition = Vector3.zero;
+              
+            }
 
             if (_startWhite) _flipflop = true;
             else _flipflop = false;
