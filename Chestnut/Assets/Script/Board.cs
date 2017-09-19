@@ -35,7 +35,6 @@ public class Board : MonoBehaviour {
     private List<FENString> Moves = new List<FENString>();
 
     private bool _moved = false;
-    private int Turn = 0;
 
 
     // Use this for initialization
