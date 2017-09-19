@@ -58,26 +58,30 @@ public class Board : MonoBehaviour {
         
         for (int r = 0; r < 8; r++) {
 
-            GameObject square;
+            GameObject square,quad;
 
             for (int f = 0; f < 8; f ++) {
 
                 square = new GameObject(_ranks[r] + (f + 1).ToString());
                 square.transform.position = new Vector3(6f * f, 0f, 6f * r);
                 square.transform.parent = transform;
+                square.AddComponent<BoxCollider>().size = new Vector3(6f,1f,6f);
+                square.tag = "Square";
 
                 if (_flipflop)
                 {
-                   Instantiate(whiteQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f)).transform.parent = square.transform;
-                    
+                    quad = Instantiate(whiteQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f));
+                    quad.transform.parent = square.transform;
+                    quad.transform.localPosition = Vector3.zero;
                 }
                 else
                 {
-                    Instantiate(blackQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f)).transform.parent = square.transform; 
-                   
+                    quad = Instantiate(blackQuad, Vector3.zero, Quaternion.Euler(90f, 0f, 0f));
+                    quad.transform.parent = square.transform;
+                    quad.transform.localPosition = Vector3.zero;
                 }
                 _flipflop = !_flipflop;
-                
+
                 GameObject piece;
                 switch ((char)board[r, f])
                {
@@ -134,7 +138,7 @@ public class Board : MonoBehaviour {
                         piece.transform.rotation = Quaternion.identity;
                         break;
                 }
-                
+                piece.tag = "Piece";
                 piece.transform.parent = square.transform;
 
 

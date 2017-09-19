@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33681549983184684}
   - component: {fileID: 64014359948935874}
   - component: {fileID: 23874948925619740}
-  - component: {fileID: 65059766581713354}
+  - component: {fileID: 114889950383328068}
   m_Layer: 0
   m_Name: Black Quad
-  m_TagString: Untagged
+  m_TagString: Quad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,21 +90,22 @@ MeshCollider:
   m_GameObject: {fileID: 1973600864346216}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65059766581713354
-BoxCollider:
+--- !u!114 &114889950383328068
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973600864346216}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000002, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87c7f1e7cdd6dc489f2b467ebde399e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defualtMat: {fileID: 2100000, guid: 7fa5e49a1c8d24745afd7dac8a2bf35f, type: 2}
+  hiLight: {fileID: 2100000, guid: 86c09d77640a2804fab00666ee71726d, type: 2}
