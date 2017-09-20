@@ -40,7 +40,7 @@ public class Board : MonoBehaviour {
     private bool _moved = false;
     private bool _startWhite = false;
     private bool _flipflop = true;
-
+    private string _tag = "";
     // Use this for initialization
 
     void Start () {
@@ -88,57 +88,70 @@ public class Board : MonoBehaviour {
                     case 'K':
                         piece = Instantiate(whiteKing,Vector3.zero, Quaternion.identity);
                         piece.name = "White King";
+                        _tag = "White";
                         break;
                     case 'Q':
                         piece = Instantiate(whiteQueen, Vector3.zero, Quaternion.identity);
                         piece.name = "White Queen";
+                        _tag = "White";
                         break;
                     case 'B':
                         piece = Instantiate(whiteBishop, Vector3.zero, Quaternion.identity);
                         piece.name = "White Bishop";
+                        _tag = "White";
                         break;
                     case 'N':
                         piece = Instantiate(whiteKnight,Vector3.zero, Quaternion.identity);
                         piece.name = "White Knight";
+                        _tag = "White";
                         break;
                     case 'R':
                         piece = Instantiate(whiteRook,Vector3.zero, Quaternion.identity);
                         piece.name = "White Rook";
+                        _tag = "White";
                         break;
                     case 'P':
                         piece = Instantiate(whitePawn,Vector3.zero, Quaternion.identity);
                         piece.name = "White Pawn";
+                        _tag = "White";
                         break;
                     case 'k':
                         piece = Instantiate(blackKing,Vector3.zero, Quaternion.identity);
                         piece.name = "Black King";
+                        _tag = "Black";
                         break;
                     case 'q':
                         piece = Instantiate(blackQueen,Vector3.zero, Quaternion.identity);
                         piece.name = "Black Queen";
+                        _tag = "Black";
                         break;
                     case 'b':
                         piece = Instantiate(blackBishop,Vector3.zero, Quaternion.identity);
                         piece.name = "Black Bishop";
+                        _tag = "Black";
                         break;
                     case 'n':
                         piece = Instantiate(blackKnight,Vector3.zero, Quaternion.identity);
                         piece.name = "Black Knight";
+                        _tag = "Black";
                         break;
                     case 'r':
                         piece = Instantiate(blackRook,Vector3.zero, Quaternion.identity);
                         piece.name = "Black Rook";
+                        _tag = "Black";
                         break;
                     case 'p':
                         piece = Instantiate(blackPawn,Vector3.zero, Quaternion.identity);
                         piece.name = "Black Pawn";
+                        _tag = "Black";
                         break;
                     default :
                         piece = new GameObject("Empty");
                         piece.transform.rotation = Quaternion.identity;
+                        _tag = "Empty";
                         break;
                 }
-                piece.tag = "Piece";
+                piece.tag = _tag;
                 piece.transform.parent = square.transform;
 
 

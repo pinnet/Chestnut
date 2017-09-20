@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Select : MonoBehaviour {
-    protected GameObject PreviousHit;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    protected GameObject _previousHit;
+    [SerializeField]
+    Vector2 cursorHotspot = new Vector2();
+    [SerializeField]
+    Texture2D cursorTexture = null;
+    [SerializeField]
+    Manager manager;
+    // Use this for initialization
+    void Start () {
+         
+        Cursor.SetCursor(cursorTexture,cursorHotspot, CursorMode.Auto);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,13 +30,31 @@ public class Select : MonoBehaviour {
                 
                 if (hitInfo.transform.gameObject.tag == "Square")
                 {
-
-
                     GameObject parentSquare = (hitInfo.transform.gameObject);
+                    if (!parentSquare) return;
+                    Quad q = parentSquare.GetComponentInChildren<Quad>();
+                    Piece p = parentSquare.GetComponentInChildren<Piece>();
 
-                    parentSquare.GetComponentInChildren<Quad>().Hilight(true);
+                    if (p) {
+                        
+                            if (p.tag != ((manager.PlayerIsWhite) ? "White" : "Black" ))
+                            {
+                                q.Hilight(HiliteColor.red);
+                            }
+                            else
+                            {
+                                q.Hilight(HiliteColor.green);
+                            }
 
-                    PreviousHit = parentSquare;
+                      
+                        Debug.Log(p.tag);
+                    }
+                    else
+                    {
+
+                        q.Hilight(HiliteColor.orange);
+                    }
+                    _previousHit = parentSquare;
 
                 }   
             }
@@ -37,14 +62,10 @@ public class Select : MonoBehaviour {
         }
         if (Input.GetMouseButtonUp(0))
         {
-
-
-                    GameObject parentSquare = PreviousHit;
-
-                    parentSquare.GetComponentInChildren<Quad>().Hilight(false);
-
-                 
-            
+            GameObject parentSquare = _previousHit;
+            if (!parentSquare) return;
+            Quad q = parentSquare.GetComponentInChildren<Quad>();
+            q.Hilight(HiliteColor.none);
 
         }
     }

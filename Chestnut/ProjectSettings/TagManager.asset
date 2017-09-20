@@ -8,6 +8,8 @@ TagManager:
   - Empty
   - Square
   - Quad
+  - Black
+  - White
   layers:
   - Default
   - TransparentFX

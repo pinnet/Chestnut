@@ -108,4 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defualtMat: {fileID: 2100000, guid: 7fa5e49a1c8d24745afd7dac8a2bf35f, type: 2}
-  hiLight: {fileID: 2100000, guid: 86c09d77640a2804fab00666ee71726d, type: 2}
+  redHiLight: {fileID: 2100000, guid: be23b9d47e557f140b28c24e369b749c, type: 2}
+  greenHiLight: {fileID: 2100000, guid: 26de69da43e9012428177888b315c914, type: 2}
+  orangeHiLight: {fileID: 2100000, guid: 86c09d77640a2804fab00666ee71726d, type: 2}
