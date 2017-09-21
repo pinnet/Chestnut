@@ -10,7 +10,8 @@ public class VerticalInput : MonoBehaviour {
     float x;
     [SerializeField]
     Vector3 axis;
-
+    [SerializeField]
+    public int MouseRotationSpeed = 100;
     // Use this for initialization
     void Start () {
 		
@@ -18,26 +19,35 @@ public class VerticalInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        axis = transform.rotation.eulerAngles;
+        if (Input.GetMouseButton(1))
+        {
 
-        axis = transform.rotation.eulerAngles;      
+            x = Input.GetAxis("Mouse Y");
+            x = x * (MouseRotationSpeed * Time.deltaTime);
 
-        x = Input.GetAxis("Vertical");
-
-        if (x > 0f){
+        }
+        else
+        {
+           
+            x = Input.GetAxis("Vertical");
+            x = x * (RotationSpeed * Time.deltaTime);
+        }
+        
+        if (x > 0f)
+        {
 
             if (axis.x > 89f) x = 0;
 
         }
 
-        if (x < 0f){
-            if (axis.x < 1.0f) x = 0f;
+        if (x < 0f)
+        {
+            if (axis.x < 1.0f) x = 0;
         }
-
-
-        x = x * (RotationSpeed * Time.deltaTime);
-
+        
         transform.Rotate(x, 0, 0);
-
+        
 
     }
 }

@@ -9,53 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1361925060302480}
+  m_RootGameObject: {fileID: 1377865594373718}
   m_IsPrefabParent: 1
---- !u!1 &1361925060302480
+--- !u!1 &1008969204524204
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4862886237108344}
-  - component: {fileID: 114631039693494062}
-  m_Layer: 0
-  m_Name: Camera Gimble
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1406891613103242
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4712129212889492}
-  - component: {fileID: 20408226387120114}
-  - component: {fileID: 92321417903771426}
-  - component: {fileID: 124404444320788358}
-  - component: {fileID: 81933127430892650}
-  - component: {fileID: 114234082680734178}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1651389461348262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4936606995265210}
-  - component: {fileID: 114576545380865248}
+  - component: {fileID: 4614705151443536}
+  - component: {fileID: 114603912463589396}
   m_Layer: 0
   m_Name: Camera arm
   m_TagString: Untagged
@@ -63,53 +27,90 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4712129212889492
+--- !u!1 &1377865594373718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4638334073613922}
+  - component: {fileID: 114142048386818208}
+  m_Layer: 0
+  m_Name: Camera Gimble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1758499108889514
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4286124000365996}
+  - component: {fileID: 20263269128075322}
+  - component: {fileID: 92737411549593792}
+  - component: {fileID: 124518981537077910}
+  - component: {fileID: 81789694821005994}
+  - component: {fileID: 114893896216784964}
+  - component: {fileID: 114544570394822746}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4286124000365996
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1758499108889514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4936606995265210}
+  m_Father: {fileID: 4614705151443536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4862886237108344
+--- !u!4 &4614705151443536
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1361925060302480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21, y: 0, z: 21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4936606995265210}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4936606995265210
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651389461348262}
+  m_GameObject: {fileID: 1008969204524204}
   m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4712129212889492}
-  m_Father: {fileID: 4862886237108344}
+  - {fileID: 4286124000365996}
+  m_Father: {fileID: 4638334073613922}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
---- !u!20 &20408226387120114
+--- !u!4 &4638334073613922
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377865594373718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21, y: 0, z: 21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4614705151443536}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20263269128075322
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1758499108889514}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
@@ -140,38 +141,52 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!81 &81933127430892650
+--- !u!81 &81789694821005994
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1758499108889514}
   m_Enabled: 1
---- !u!92 &92321417903771426
+--- !u!92 &92737411549593792
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1758499108889514}
   m_Enabled: 1
---- !u!114 &114234082680734178
+--- !u!114 &114142048386818208
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1377865594373718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627ed9fcbdaa7ae46b3e222fdb059b2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bf72da53e4e6d54696aabc973337e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoom: 56
---- !u!114 &114576545380865248
+  RotationSpeed: 50
+--- !u!114 &114544570394822746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651389461348262}
+  m_GameObject: {fileID: 1758499108889514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1205b9e0235f722489f11e1553063951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorHotspot: {x: 0, y: 0}
+  cursorTexture: {fileID: 0}
+  manager: {fileID: 0}
+--- !u!114 &114603912463589396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008969204524204}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e9517a830d967144b13ef8cf765238c, type: 3}
@@ -180,22 +195,22 @@ MonoBehaviour:
   RotationSpeed: 50
   x: 0
   axis: {x: 0, y: 0, z: 0}
---- !u!114 &114631039693494062
+--- !u!114 &114893896216784964
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1361925060302480}
+  m_GameObject: {fileID: 1758499108889514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf72da53e4e6d54696aabc973337e02, type: 3}
+  m_Script: {fileID: 11500000, guid: 627ed9fcbdaa7ae46b3e222fdb059b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 50
---- !u!124 &124404444320788358
+  zoom: 56
+--- !u!124 &124518981537077910
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406891613103242}
+  m_GameObject: {fileID: 1758499108889514}
   m_Enabled: 1

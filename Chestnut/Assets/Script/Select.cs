@@ -8,11 +8,11 @@ public class Select : MonoBehaviour {
     Vector2 cursorHotspot = new Vector2();
     [SerializeField]
     Texture2D cursorTexture = null;
-    [SerializeField]
-    MoveManager manager;
+    protected MoveManager _moveManager;
+ 
     // Use this for initialization
     void Start () {
-         
+        _moveManager = GetComponent<MoveManager>();
         Cursor.SetCursor(cursorTexture,cursorHotspot, CursorMode.Auto);
     }
     
@@ -37,7 +37,7 @@ public class Select : MonoBehaviour {
 
                     if (p) {
                         
-                            if (p.tag != ((manager.PlayerIsWhite) ? "White" : "Black" ))
+                            if (p.tag != ((_moveManager.PlayerIsWhite) ? "White" : "Black" ))
                             {
                                 q.Hilight(HiliteColor.red);
                             }

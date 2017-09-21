@@ -4,18 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MoveManager : MonoBehaviour {
-
+    [SerializeField]
     protected bool _playerIsWhite = false;
-    //[SerializeField]
-    
+    [SerializeField]
+    protected int _move = 0;
+    [SerializeField]
+    protected HorizontalInput camraGimble;
 
+    public int Move
+    {
+        get { return _move; }
+
+    }
+    public void TogglePlayer() {
+
+        PlayerIsWhite = !_playerIsWhite;
+
+    }
     public bool PlayerIsWhite
-    { get { return _playerIsWhite; } }
+    {
+        get { return _playerIsWhite; }
+        set
+        {
+            camraGimble.RotateToWhite(value);
+            _playerIsWhite = value;
 
-    public void newWindow() {
-
-
-
+        }
     }
 
     void Awake()

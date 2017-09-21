@@ -5,9 +5,22 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    protected int _numberOfMoves = 0 ;
+
+
+    public bool isValidMove(string from)
+    {
+
+        return false;
+    }
     public string CurrentPosition
     {
         get { return GetCurrentPosition(); }
+    }
+
+    public int NumberOfMoves
+    {
+        get { return _numberOfMoves; }
     }
 
     private void Start()
