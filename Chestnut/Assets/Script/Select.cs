@@ -9,15 +9,15 @@ public class Select : MonoBehaviour {
     [SerializeField]
     Texture2D cursorTexture = null;
     [SerializeField]
-    Manager manager;
+    MoveManager manager;
     // Use this for initialization
     void Start () {
          
         Cursor.SetCursor(cursorTexture,cursorHotspot, CursorMode.Auto);
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -60,6 +60,7 @@ public class Select : MonoBehaviour {
             }
             
         }
+        
         if (Input.GetMouseButtonUp(0))
         {
             GameObject parentSquare = _previousHit;

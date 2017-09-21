@@ -14,7 +14,7 @@ public class Quad : MonoBehaviour {
     protected Material greenHiLight;
     [SerializeField]
     protected Material orangeHiLight;
-
+    
     public void Hilight(HiliteColor colour) {
 
         transform.localPosition = new Vector3(0, 0.01f, 0);

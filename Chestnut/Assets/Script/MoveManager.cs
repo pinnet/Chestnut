@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Manager : MonoBehaviour {
+public class MoveManager : MonoBehaviour {
 
     protected bool _playerIsWhite = false;
     //[SerializeField]

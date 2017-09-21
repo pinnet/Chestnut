@@ -45,7 +45,7 @@ public class Board : MonoBehaviour {
 
     void Start () {
 
-        FENString fenString = new FENString("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1");
+        FENString fenString = new FENString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
         if (fenString.isValid)
         {
             Moves.Add(fenString);
@@ -65,7 +65,11 @@ public class Board : MonoBehaviour {
                 square = new GameObject(_ranks[r] + (f + 1).ToString());
                 square.transform.position = new Vector3(6f * f, 0f, 6f * r);
                 square.transform.parent = transform;
-                square.AddComponent<BoxCollider>().size = new Vector3(6f,1f,6f);
+                square.AddComponent<Square>();
+                BoxCollider bc = square.AddComponent<BoxCollider>();
+                bc.size = new Vector3(6f, 1f, 6f);
+                bc.isTrigger = true;
+
                 square.tag = "Square";
 
                 if (_flipflop)

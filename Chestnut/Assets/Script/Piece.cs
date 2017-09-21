@@ -14,9 +14,7 @@ public class Piece : MonoBehaviour
     {
 
     }
-
-
-
+    
     private string GetCurrentPosition()
     {
 
