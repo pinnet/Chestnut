@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoveManager : MonoBehaviour {
-    [SerializeField]
-    protected bool _playerIsWhite = false;
-    [SerializeField]
-    protected int _move = 0;
-    [SerializeField]
-    protected HorizontalInput camraGimble;
+public abstract class MoveManager : MonoBehaviour {
 
-    public int Move
+    protected List<FENString> Moves = new List<FENString>();
+    protected FENString fenString = new FENString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
+    protected static bool _playerIsWhite = false;
+    protected static int _move = 0;
+    protected static int[,] _board;
+
+
+    public int[,] FENBoard
     {
-        get { return _move; }
-
+        get { return _board;  }
+        set { _board = value; }
     }
+
     public void TogglePlayer() {
 
         PlayerIsWhite = !_playerIsWhite;
@@ -26,23 +28,17 @@ public class MoveManager : MonoBehaviour {
         get { return _playerIsWhite; }
         set
         {
-            camraGimble.RotateToWhite(value);
             _playerIsWhite = value;
 
         }
     }
-
-    void Awake()
+    public void Move(Square from, Square to)
     {
-        DontDestroyOnLoad(transform.gameObject);
+
+        Piece p = from.GetComponentInChildren<Piece>();
+        p.transform.parent = to.transform;
+        p.NumberOfMoves++;
+        p.transform.localPosition = Vector3.zero;
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MonoBehaviour {
+public class Board : MoveManager {
 
     [SerializeField]
     GameObject whiteKing;
@@ -35,7 +35,9 @@ public class Board : MonoBehaviour {
     [SerializeField]
     GameObject blackQuad;
 
-    private List<FENString> Moves = new List<FENString>();
+    
+
+    
     private const string _ranks = "abcdefgh";
     private bool _moved = false;
     private bool _startWhite = false;
@@ -45,7 +47,7 @@ public class Board : MonoBehaviour {
 
     void Start () {
 
-        FENString fenString = new FENString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
+        
         if (fenString.isValid)
         {
             Moves.Add(fenString);
@@ -55,7 +57,7 @@ public class Board : MonoBehaviour {
 
     private void SetupBoard(int[,] board)
     {
-        
+        FENBoard = board;
         for (int r = 0; r < 8; r++) {
 
             GameObject square,quad;

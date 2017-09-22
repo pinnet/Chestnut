@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4404832271061800}
-  - component: {fileID: 114513903711695440}
+  - component: {fileID: 114419724527616056}
   m_Layer: 0
   m_Name: Black Queen
   m_TagString: Black
@@ -128,7 +128,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114513903711695440
+--- !u!114 &114419724527616056
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -136,6 +136,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881424046310268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b0d10bdc3678d4bb974051e2333c4e, type: 3}
+  m_Script: {fileID: 11500000, guid: da60d13e226711b4ab958969f35b693f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
