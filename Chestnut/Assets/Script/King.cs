@@ -7,9 +7,9 @@ public class King : Piece {
 
 
 
-    public override bool[,] BuildMatrix()
+    public override bool[,] BuildMoveMatrix()
     {
-        _matrix = new bool[8, 8];
+        bool[,] _matrix = new bool[8, 8];
         bool[,] _pieceMatrix = BuildPieceMatrix();
         int rank = CurrentPosition.Rank;
         int file = CurrentPosition.File;

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Queen : Piece {
-
-    public override bool[,] BuildMatrix()
+public class Knight : Piece {
+    public override bool[,] BuildMoveMatrix()
     {
-
+        bool[,] _matrix = new bool[8, 8];
         bool[,] _pieceMatrix = BuildPieceMatrix();
         int rank = CurrentPosition.Rank;
         int file = CurrentPosition.File;

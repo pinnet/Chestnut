@@ -5,7 +5,8 @@ using UnityEngine;
 
 public abstract class Piece : MonoBehaviour
 {
-    protected bool[,] _matrix = new bool[8,8];
+    
+    protected bool[,] _checkMatrix = new bool[8, 8];
     protected static int[,] _board;
     
 
@@ -14,21 +15,24 @@ public abstract class Piece : MonoBehaviour
         get { return checkColor(); }
         
     }
-
+    public bool[,] CheckMatrix
+    {
+        get { return _checkMatrix; }
+        set { _checkMatrix = value; }
+    }
     public int[,] Board
     {
         get { return _board; }
-        set { _board = value; BuildMatrix(); }
+        set { _board = value; }
     }
-    [SerializeField]
+  
     protected int _numberOfMoves = 0;
     protected const string ranks = "abcdefgh"; 
     public bool[,] MoveMatrix
-    { get { return _matrix; } }
+    { get { return BuildMoveMatrix(); } }
 
     public bool[,] BuildPieceMatrix() {
-
-         bool[,] _pieceMatrix = new bool[8, 8];
+        bool[,] _pieceMatrix = new bool[8, 8];
         
         for (int r = 0; r < 8; r++)
             for (int f = 0; f < 8; f++)
@@ -38,7 +42,7 @@ public abstract class Piece : MonoBehaviour
         return _pieceMatrix;
     }
 
-    public virtual bool[,] BuildMatrix()
+    public virtual bool[,] BuildMoveMatrix()
     {
         throw new NotImplementedException();
     }

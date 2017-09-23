@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMove {
+public class Empty : Piece {
 
-    void Move(string from, string to);
-
+	
 }

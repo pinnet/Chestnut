@@ -34,10 +34,13 @@ public class Board : MoveManager {
     GameObject whiteQuad;
     [SerializeField]
     GameObject blackQuad;
+    [SerializeField]
+    CapturedPieces yourPieces;
 
-    
 
-    
+
+
+
     private const string _ranks = "abcdefgh";
     private bool _moved = false;
     private bool _startWhite = false;
@@ -47,7 +50,7 @@ public class Board : MoveManager {
 
     void Start () {
 
-        
+        captured = yourPieces;
         if (fenString.isValid)
         {
             Moves.Add(fenString);
@@ -55,8 +58,13 @@ public class Board : MoveManager {
         SetupBoard(fenString.Board);
     }
 
-    private void SetupBoard(int[,] board)
+    public override void SetupBoard(int[,] board)
     {
+        if (captured) {
+
+            
+        }
+
         FENBoard = board;
         for (int r = 0; r < 8; r++) {
 
@@ -95,6 +103,7 @@ public class Board : MoveManager {
                         piece = Instantiate(whiteKing,Vector3.zero, Quaternion.identity);
                         piece.name = "White King";
                         _tag = "White";
+                        
                         break;
                     case 'Q':
                         piece = Instantiate(whiteQueen, Vector3.zero, Quaternion.identity);
@@ -153,16 +162,15 @@ public class Board : MoveManager {
                         break;
                     default :
                         piece = new GameObject("Empty");
+                        piece.AddComponent<Empty>();
                         piece.transform.rotation = Quaternion.identity;
                         _tag = "Empty";
                         break;
                 }
                 piece.tag = _tag;
                 piece.transform.parent = square.transform;
-
-
                 piece.transform.localPosition = Vector3.zero;
-              
+                _objBoard[r, f] = piece.GetComponent<Piece>();
             }
 
             if (_startWhite) _flipflop = true;

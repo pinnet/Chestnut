@@ -26,6 +26,7 @@ public class Square : MoveManager {
         {
             if (!SelectedPiece) return;
             SelectedPiece.Board = FENBoard;
+            SelectedPiece.CheckMatrix = BiuldCheckMatrix();
             isValid = SelectedPiece.isValidMove(name);
             Quad q = GetComponentInChildren<Quad>();
             if (isValid)
