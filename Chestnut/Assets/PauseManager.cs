@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,10 +32,10 @@ public class PauseManager : MonoBehaviour {
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#else
+//#if UNITY_EDITOR
+//        EditorApplication.isPlaying = false;
+//#else
         Application.Quit();
-#endif
+//#endif
     }
 }
