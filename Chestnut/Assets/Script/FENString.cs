@@ -9,69 +9,86 @@ public class FENString {
     const string EN  = "abcdefgh12345678-";
     const int FENWORDS = 6;
 
-    protected int[,] _board = new int[8, 8];
-    protected string _FEN = "";
-    protected string _ENP = "";
-    protected int _HMC = 0;
-    protected int _FMN = 0;
-    protected bool _isWhiteMove = false;
-    protected bool _isValid = false;
-    protected bool _wccqs = false;
-    protected bool _wccks = false;
-    protected bool _bccqs = false;
-    protected bool _bccks = false;
-    protected bool _BlackKing = false;
-    protected bool _WhiteKing = false;
+    protected static int[,] _board = new int[8, 8];
+    protected static string _FEN = "";
+    protected static string _ENP = "";
+    protected static int _HMC = 0;
+    protected static int _FMN = 0;
+    protected static bool _isWhiteMove = false;
+    protected static bool _isValid = false;
+    protected static bool _wccqs = false;
+    protected static bool _wccks = false;
+    protected static bool _bccqs = false;
+    protected static bool _bccks = false;
+    protected static bool _BlackKing = false;
+    protected static bool _WhiteKing = false;
 
-    public FENString(string FEN) {
 
+    private static void ResetFEN() {
+
+        _BlackKing = false;
+        _WhiteKing = false;
+        _isWhiteMove = false;
+        _isValid = false;
+        _wccqs = false;
+        _wccks = false;
+        _bccqs = false;
+        _bccks = false;
+        _FEN = "";
+         _ENP = "";
+        _HMC = 0;
+        _FMN = 0;
+
+}
+    public static bool ParseString(string FEN)
+    {
+        ResetFEN();
         _isValid = validateFEN(FEN);
-        _FEN = FEN;
-
+        return _isValid;
     }
-    public string EnPesantMove
+    public static string EnPesantMove
     {
         get
         {
             return _ENP;
         }
     }
-    public string RawString
+    public static string RawString
     {
         get
         {
             return _FEN;
         }
     }
-    public bool WhiteCanCastleQueenSide
+    public static bool WhiteCanCastleQueenSide
     {
         get
         {
             return _wccqs;
         }
     }
-    public bool WhiteCanCastleKingsSide
+    public static bool WhiteCanCastleKingsSide
     {
         get
         {
             return _wccks;
         }
     }
-    public bool BlackCanCastleQueenSide
+    public static bool BlackCanCastleQueenSide
     {
         get
         {
             return _bccqs;
         }
     }
-    public bool BlackCanCastleKingsSide
+    public static bool BlackCanCastleKingsSide
     {
         get
         {
             return _bccks;
         }
     }
-    public bool isWhiteMove
+    public static bool isWhiteMove
     {
 
         get
@@ -80,7 +97,7 @@ public class FENString {
         }
 
     }
-    public bool isValid
+    public static bool isValid
     {
 
         get
@@ -89,7 +106,7 @@ public class FENString {
         }
 
     }
-    public int[,] Board
+    public static int[,] Layout
     {
 
         get
@@ -99,14 +116,14 @@ public class FENString {
 
     }
 
-    public int HalfMoveClock
+    public static int HalfMoveClock
     {
         get
         {
             return _HMC;
         }
     }
-    public int FullMoveNumber
+    public static int FullMoveNumber
     {
         get
         {
@@ -114,7 +131,7 @@ public class FENString {
         }
     }
 
-    public bool validateFEN(string str) {
+    public static bool validateFEN(string str) {
 
         String[] fenWords = str.Split(' ');
 
@@ -145,19 +162,19 @@ public class FENString {
 
     }
 
-    private bool CheckHalfMoveClock(string halfMoveClock)
+    private static bool CheckHalfMoveClock(string halfMoveClock)
     {
 
         if (!Int32.TryParse(halfMoveClock, out _HMC)) return false;
         return true;
     }
 
-    private bool CheckFullMoveNumber(string fullMoveNumber)
+    private static bool CheckFullMoveNumber(string fullMoveNumber)
     {
         if (!Int32.TryParse(fullMoveNumber, out _FMN)) return false;
         return true;
     }
-    private bool CheckEnPesant(string enPesant)
+    private static bool CheckEnPesant(string enPesant)
     {
         if (enPesant.Contains("-")) return true;
         for (int i = 0; i < enPesant.Length; i++)
@@ -169,7 +186,7 @@ public class FENString {
         return true;
     }
 
-    private bool CheckCastle(string castle)
+    private static bool CheckCastle(string castle)
     {
 
         if (!CN.Contains(castle)) return false;
@@ -197,7 +214,7 @@ public class FENString {
         return true;
     }
 
-    private bool CheckSquares(string rankString,int rankNumber)
+    private static bool CheckSquares(string rankString,int rankNumber)
     {
         int numberOfEmpty,squaresCount = 0;
 

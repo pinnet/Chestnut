@@ -152,6 +152,18 @@ Prefab:
       propertyPath: yourPieces
       value: 
       objectReference: {fileID: 1073968991}
+    - target: {fileID: 114051447137070532, guid: 9314670b740846b4da79f9a66367463f,
+        type: 2}
+      propertyPath: whiteQuad
+      value: 
+      objectReference: {fileID: 1667078235858308, guid: f69f9125ef066d241aa6d05b69a41d1e,
+        type: 2}
+    - target: {fileID: 114051447137070532, guid: 9314670b740846b4da79f9a66367463f,
+        type: 2}
+      propertyPath: blackQuad
+      value: 
+      objectReference: {fileID: 1973600864346216, guid: 045dc20d35ce11042ade11ab8b834266,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9314670b740846b4da79f9a66367463f, type: 2}
   m_IsPrefabParent: 0
@@ -355,24 +367,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 094e0adf991597248b747f988b3c2013, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &960858926 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1988831263098760, guid: 9314670b740846b4da79f9a66367463f,
-    type: 2}
-  m_PrefabInternal: {fileID: 839505112}
---- !u!114 &960858927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 960858926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1205b9e0235f722489f11e1553063951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorHotspot: {x: 0, y: 0}
-  cursorTexture: {fileID: 0}
 --- !u!114 &1073968991 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114438879437947270, guid: 094e0adf991597248b747f988b3c2013,

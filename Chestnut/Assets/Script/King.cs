@@ -9,8 +9,9 @@ public class King : Piece {
 
     public override bool[,] BuildMoveMatrix()
     {
-        bool[,] _matrix = new bool[8, 8];
-        bool[,] _pieceMatrix = BuildPieceMatrix();
+       
+        bool[,] moveMatrix = new bool[8, 8];
+       
         int rank = CurrentPosition.Rank;
         int file = CurrentPosition.File;
        
@@ -22,15 +23,15 @@ public class King : Piece {
                int  f = i + file;
                int  r = a + rank;
 
-                if ((r <= 8 && r >= 0) && (f <=8 && f >=0))
+                if ((r < 8 && r >= 0) && (f <8 && f >=0))
                     if (_pieceMatrix[r, f]) {
-                        _matrix[r, f] = true;
+                        moveMatrix[r, f] = true;
                     }
 
                 
             }
 
 
-        return _matrix;
+        return moveMatrix;
     }
 }

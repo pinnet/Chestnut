@@ -7,40 +7,22 @@ public abstract class Piece : MonoBehaviour
 {
     
     protected bool[,] _checkMatrix = new bool[8, 8];
-    protected static int[,] _board;
     
-
+    protected static int[,] _layout;
+    protected static bool[,] _pieceMatrix;
+    protected static Board _board;
     public bool IsWhite
     {
         get { return checkColor(); }
         
     }
-    public bool[,] CheckMatrix
-    {
-        get { return _checkMatrix; }
-        set { _checkMatrix = value; }
-    }
-    public int[,] Board
-    {
-        get { return _board; }
-        set { _board = value; }
-    }
-  
+     
     protected int _numberOfMoves = 0;
     protected const string ranks = "abcdefgh"; 
     public bool[,] MoveMatrix
     { get { return BuildMoveMatrix(); } }
 
-    public bool[,] BuildPieceMatrix() {
-        bool[,] _pieceMatrix = new bool[8, 8];
-        
-        for (int r = 0; r < 8; r++)
-            for (int f = 0; f < 8; f++)
-            {
-                _pieceMatrix[r, f] = (_board[r, f] == 0);
-            }
-        return _pieceMatrix;
-    }
+   
 
     public virtual bool[,] BuildMoveMatrix()
     {
@@ -57,6 +39,18 @@ public abstract class Piece : MonoBehaviour
         return MoveMatrix[p.Rank,p.File];
 
         
+    }
+    private void Start()
+    {
+        _board = GetComponentInParent<Board>();
+    }
+    private void Update()
+    {
+        if (_pieceMatrix != _board.PositionMatrix)
+        {
+
+            _pieceMatrix = _board.PositionMatrix;
+        }
     }
     private bool checkColor() {
 

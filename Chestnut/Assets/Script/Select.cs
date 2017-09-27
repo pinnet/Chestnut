@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Select : MoveManager
+public class Select : MonoBehaviour
 {
     protected GameObject _previousHit;
     [SerializeField]

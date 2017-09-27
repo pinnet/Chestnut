@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Assets.Script;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MoveManager {
+public class Board : MonoBehaviour {
 
     [SerializeField]
     GameObject whiteKing;
@@ -39,33 +40,76 @@ public class Board : MoveManager {
 
 
 
-
+    protected List<FENString> Moves = new List<FENString>();
+    
+    protected static bool _playerIsWhite = false;
+    protected static bool[,] _positionMatrix = new bool[8, 8];
+    protected static int _move = 0;
+    protected static int[,] _board;
+    protected static Piece[,] _objBoard = new Piece[8, 8];
+    protected static CapturedPieces captured;
 
     private const string _ranks = "abcdefgh";
-    private bool _moved = false;
+    
     private bool _startWhite = false;
     private bool _flipflop = true;
     private string _tag = "";
-    // Use this for initialization
 
-    void Start () {
-
-        captured = yourPieces;
-        if (fenString.isValid)
-        {
-            Moves.Add(fenString);
-        }
-        SetupBoard(fenString.Board);
+   public int[,] Layout
+    {
+        get { return _board; }
     }
 
-    public override void SetupBoard(int[,] board)
+    public void TogglePlayer()
     {
-        if (captured) {
 
-            
+        PlayerIsWhite = !_playerIsWhite;
+
+    }
+    public bool PlayerIsWhite
+    {
+        get { return _playerIsWhite; }
+        set
+        {
+            _playerIsWhite = value;
+
         }
+    }
+    public bool[,] PositionMatrix
+    {
+        get { return _positionMatrix; }
+        set { _positionMatrix = value; }
+    }
+    void Start () {
+        FENString.ParseString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
+        captured = yourPieces;
 
-        FENBoard = board;
+        if (FENString.isValid)
+        {
+            _board = FENString.Layout;
+           // Moves.Add(FENString);
+            _positionMatrix = BuildPositionMatrix();
+        }
+        SetupBoard(_board);
+    }
+
+    public bool[,] BuildPositionMatrix()
+    {
+        
+        bool[,] positionMatrix = new bool[8, 8];
+
+        for (int r = 0; r < 8; r++)
+            for (int f = 0; f < 8; f++)
+            {
+                positionMatrix[r, f] = (_board[r, f] == 0);
+            }
+        return positionMatrix;
+    }
+
+    public void SetupBoard(int[,] board)
+    {
+       
+
         for (int r = 0; r < 8; r++) {
 
             GameObject square,quad;
@@ -177,25 +221,75 @@ public class Board : MoveManager {
             else _flipflop = false;
             _startWhite = !_startWhite;
         }
+        BuildPositionMatrix();
     }
+    public void Move(Square from, Square to)
+    {
+        if (from == to) return;
 
+        Piece selectedPiece = from.GetComponentInChildren<Piece>();
+        Piece enmey = to.GetComponentInChildren<Piece>();
 
-    // Update is called once per frame
-    void Update () {
+        if (enmey.tag == selectedPiece.tag) return;
 
-        if (_moved)
+        if (enmey.GetType().ToString() == "Empty")
+        {
+            enmey.transform.parent = from.transform;
+            enmey.transform.localPosition = Vector3.zero;
+
+        }
+        else
         {
 
+            captured.add(enmey);
 
-            
-
-
+            GameObject newEmpty = new GameObject("Empty");
+            newEmpty.AddComponent<Empty>();
+            newEmpty.transform.parent = from.transform;
 
         }
 
+        Piece p = from.GetComponentInChildren<Piece>();
+        p.transform.parent = to.transform;
+        p.NumberOfMoves++;
+        p.transform.localPosition = Vector3.zero;
+        UpdateBoard();
+    }
+  
+    public bool[,] BuildCheckMatrix()
+    {
 
 
+        return new bool[8, 8];
+    }
+    private void UpdateBoard()
+    {
+        _board = new int[8, 8];
+        for (int a = 0; a < 8; a++)
+            for (int b = 0; b < 8; b++)
+            {
+                Piece p = _objBoard[a, b];
+                
 
+                string typ = p.GetType().ToString();
+
+                if (typ == "Empty") typ = "0";
+
+                if (p.tag == "Black") typ = typ.ToLower();
+                char o = typ[0];
+
+                _board[a, b] = (typ == "0") ? 0 : (char.Parse(o.ToString()));
+            }
+        _positionMatrix = BuildPositionMatrix();
 
     }
+    private string BoardToFEN(Piece[,] board)
+    {
+
+        for (int a = 0; a < 8; a++)
+            for (int b = 0; b < 8; b++) ;
+
+        return "";
+    }
+
 }

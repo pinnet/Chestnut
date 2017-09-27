@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour {
-    private bool flipFlop = true;
+public class PauseManager : MonoBehaviour{
+   
 
 
     Canvas canvas;

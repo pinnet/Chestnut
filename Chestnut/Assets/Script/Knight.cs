@@ -5,8 +5,9 @@ using UnityEngine;
 public class Knight : Piece {
     public override bool[,] BuildMoveMatrix()
     {
+       
         bool[,] _matrix = new bool[8, 8];
-        bool[,] _pieceMatrix = BuildPieceMatrix();
+       
         int rank = CurrentPosition.Rank;
         int file = CurrentPosition.File;
         int validRank = 0;

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23876061444089882}
   - component: {fileID: 95266170899245098}
   - component: {fileID: 114051447137070532}
+  - component: {fileID: 114605815453399084}
   m_Layer: 8
   m_Name: Chess Board
   m_TagString: Untagged
@@ -129,3 +130,17 @@ MonoBehaviour:
   blackPawn: {fileID: 1060468728924604, guid: 6823d1302e972a94a91054416dbc4062, type: 2}
   whiteQuad: {fileID: 1973600864346216, guid: 045dc20d35ce11042ade11ab8b834266, type: 2}
   blackQuad: {fileID: 1667078235858308, guid: f69f9125ef066d241aa6d05b69a41d1e, type: 2}
+  yourPieces: {fileID: 0}
+--- !u!114 &114605815453399084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1205b9e0235f722489f11e1553063951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorHotspot: {x: 0, y: 0}
+  cursorTexture: {fileID: 0}

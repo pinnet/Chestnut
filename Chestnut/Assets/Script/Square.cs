@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Square : MoveManager {
+public class Square : MonoBehaviour{
     protected static Square _startSquare;
     protected static bool _dragOn = false;
     protected static Square _endSquare;
     protected static Piece _selectedPiece;
     protected static bool isValid = false;
-
+    protected static bool[,] Positions;
 
     public Piece SelectedPiece {
-        get { return _selectedPiece; }
-        set { _selectedPiece = value; }
-    }
 
+        get { return _selectedPiece;}
+        set { _selectedPiece = value; }
+
+    }
+    
     private void OnMouseEnter()
     {
         if (_startSquare != null) {
@@ -24,10 +26,10 @@ public class Square : MoveManager {
         }
       if(_dragOn)
         {
-            if (!SelectedPiece) return;
-            SelectedPiece.Board = FENBoard;
-            SelectedPiece.CheckMatrix = BiuldCheckMatrix();
-            isValid = SelectedPiece.isValidMove(name);
+            if (!_selectedPiece) return;
+           // transform.parent.GetComponent<Board>().PositionMatrix = Positions;
+            //SelectedPiece.CheckMatrix = BuildCheckMatrix();
+            isValid = _selectedPiece.isValidMove(name);
             Quad q = GetComponentInChildren<Quad>();
             if (isValid)
             {
@@ -55,7 +57,8 @@ public class Square : MoveManager {
     {
         if (isValid)
         {
-            Move(_startSquare, _endSquare);
+            Board Parent = transform.parent.GetComponent<Board>();
+            Parent.Move(_startSquare, _endSquare); 
             isValid = false;
         }
 
