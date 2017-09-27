@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour {
 
+
+
     [SerializeField]
     GameObject whiteKing;
     [SerializeField]
@@ -37,8 +39,11 @@ public class Board : MonoBehaviour {
     [SerializeField]
     CapturedPieces yourPieces;
 
+    System.Guid myGUID = System.Guid.NewGuid();
 
-    public bool Upated = false;
+    public bool Upated = false; // todo Prameter this
+
+
     protected List<FENString> Moves = new List<FENString>();
     
     protected  bool _playerIsWhite = false;
@@ -84,7 +89,7 @@ public class Board : MonoBehaviour {
 
         con = GameObject.FindObjectOfType<UCIConsole>();
         con.STDIN = "Start Game <Board.cs>";
-
+        con.STDIN = myGUID.ToString();
 
         FENString.ParseString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
         captured = yourPieces;
