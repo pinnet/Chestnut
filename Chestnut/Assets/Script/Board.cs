@@ -1,5 +1,4 @@
-﻿using Assets.Script;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,21 +38,22 @@ public class Board : MonoBehaviour {
     CapturedPieces yourPieces;
 
 
-
+    public bool Upated = false;
     protected List<FENString> Moves = new List<FENString>();
     
-    protected static bool _playerIsWhite = false;
-    protected static bool[,] _positionMatrix = new bool[8, 8];
-    protected static int _move = 0;
-    protected static int[,] _board;
-    protected static Piece[,] _objBoard = new Piece[8, 8];
-    protected static CapturedPieces captured;
+    protected  bool _playerIsWhite = false;
+    protected  bool[,] _positionMatrix = new bool[8, 8];
+    protected  int _move = 0;
+    protected  int[,] _board;
+    protected  Piece[,] _objBoard = new Piece[8, 8];
+    protected  CapturedPieces captured;
 
     private const string _ranks = "abcdefgh";
     
     private bool _startWhite = false;
     private bool _flipflop = true;
     private string _tag = "";
+    private UCIConsole con;
 
    public int[,] Layout
     {
@@ -81,16 +81,23 @@ public class Board : MonoBehaviour {
         set { _positionMatrix = value; }
     }
     void Start () {
+
+        con = GameObject.FindObjectOfType<UCIConsole>();
+        con.STDIN = "Start Game <Board.cs>";
+
+
         FENString.ParseString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
         captured = yourPieces;
 
         if (FENString.isValid)
         {
             _board = FENString.Layout;
+            con.STDIN = ("FEN " + FENString.RawString);
            // Moves.Add(FENString);
             _positionMatrix = BuildPositionMatrix();
         }
         SetupBoard(_board);
+        Upated = true;
     }
 
     public bool[,] BuildPositionMatrix()
@@ -254,6 +261,7 @@ public class Board : MonoBehaviour {
         p.NumberOfMoves++;
         p.transform.localPosition = Vector3.zero;
         UpdateBoard();
+        Upated = true;
     }
   
     public bool[,] BuildCheckMatrix()

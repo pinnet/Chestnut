@@ -158,6 +158,8 @@ public class FENString {
 
         if (!CheckFullMoveNumber(fenWords[(int)FEN.FullMove])) return false;
 
+        _FEN = str;
+
         return true;
 
     }
