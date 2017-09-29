@@ -13,14 +13,22 @@ public class VerticalInput : MonoBehaviour {
     [SerializeField]
     public int MouseRotationSpeed = 100;
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    protected bool _dragOn = false;
+    public void OnDragStart()
+    {
+        _dragOn = true;
+        MouseRotationSpeed += 100;
+    }
+    public void OnDragEnd()
+    {
+        _dragOn = false;
+        MouseRotationSpeed -= 100;
+    }
+
+    // Update is called once per frame
+    void Update () {
         axis = transform.rotation.eulerAngles;
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) || _dragOn)
         {
 
             x = Input.GetAxis("Mouse Y");
