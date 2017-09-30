@@ -12,23 +12,28 @@ public class VerticalInput : MonoBehaviour {
     Vector3 axis;
     [SerializeField]
     public int MouseRotationSpeed = 100;
+    ChangeView view;
     // Use this for initialization
     protected bool _dragOn = false;
     public void OnDragStart()
     {
         _dragOn = true;
-        MouseRotationSpeed += 100;
+       
     }
     public void OnDragEnd()
     {
         _dragOn = false;
-        MouseRotationSpeed -= 100;
+       
     }
-
+    private void Start()
+    {
+        
+        view = GameObject.FindObjectOfType<ChangeView>();
+    }
     // Update is called once per frame
     void Update () {
-        axis = transform.rotation.eulerAngles;
-        if (Input.GetMouseButton(1) || _dragOn)
+        
+        if (Input.GetMouseButton(2) || _dragOn)
         {
 
             x = Input.GetAxis("Mouse Y");
@@ -41,20 +46,25 @@ public class VerticalInput : MonoBehaviour {
             x = Input.GetAxis("Vertical");
             x = x * (RotationSpeed * Time.deltaTime);
         }
-        
+
+        axis = transform.rotation.eulerAngles;
         if (x > 0f)
         {
 
-            if (axis.x > 89f) x = 0;
+            if (axis.x > 88f)
+            {
+                x = x - 1f;
+                view.PerspectiveMode = false;        
+            }
 
         }
-
-        if (x < 0f)
+        else if (x < 0f)
         {
-            if (axis.x < 1.0f) x = 0;
+            view.PerspectiveMode = true;
+            if (axis.x < 0.1f || axis.x > 300f) x = x +1f;
         }
         
-        transform.Rotate(x, 0, 0);
+        transform.Rotate(x, 0f, 0f);
         
 
     }

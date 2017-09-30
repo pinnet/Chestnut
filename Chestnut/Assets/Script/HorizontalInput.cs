@@ -8,17 +8,20 @@ public class HorizontalInput : MonoBehaviour {
     public int RotationSpeed = 50;
     [SerializeField]
     public int MouseRotationSpeed = 100;
+   
     // Use this for initialization
     protected bool _dragOn = false;
+
+
     public void OnDragStart()
     {
         _dragOn = true;
-        MouseRotationSpeed += 100;
+       
     }
     public void OnDragEnd()
     {
         _dragOn = false;
-        MouseRotationSpeed -= 100;
+       
     }
 
     void Start () {
@@ -29,7 +32,7 @@ public class HorizontalInput : MonoBehaviour {
 	void Update () {
         
            
-        if (Input.GetMouseButton(1) || _dragOn)
+        if (Input.GetMouseButton(2) || _dragOn)
         {
                
             float y = Input.GetAxis("Mouse X");
@@ -37,7 +40,7 @@ public class HorizontalInput : MonoBehaviour {
             transform.Rotate(0, y, 0);
  
         }
-        else
+        else if(Input.anyKeyDown)
         {
             float y = Input.GetAxis("Horizontal");
             y = y * (RotationSpeed * Time.deltaTime);
