@@ -17,8 +17,8 @@ public class VerticalInput : MonoBehaviour {
     protected bool _dragOn = false;
     public void OnDragStart()
     {
-        _dragOn = true;
-       
+        _dragOn = true;  // (Input.mousePosition.y < 50);
+
     }
     public void OnDragEnd()
     {
@@ -32,7 +32,7 @@ public class VerticalInput : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        
+       
         if (Input.GetMouseButton(2) || _dragOn)
         {
 

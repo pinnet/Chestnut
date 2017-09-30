@@ -15,14 +15,9 @@ public class ChangeView : MonoBehaviour {
     {
        
        
-        if (_perspective)
+        if (!_perspective)
         {
-            text.text = "P";
-            
-        }
-        else {
-            text.text = "O";
-
+        
             CameraArm.gameObject.transform.eulerAngles = new Vector3(36f,0, 0);
 
         }
@@ -40,10 +35,12 @@ public class ChangeView : MonoBehaviour {
             Camera.main.orthographic = true;
             CameraArm.gameObject.transform.eulerAngles = new Vector3(90, 0, 0);
             Camera.main.orthographicSize = 30f;
+            text.text = "P";
         }
         else
         {
-            //
+            text.text = "O";
+
             Camera.main.orthographic = false;
         }
     }

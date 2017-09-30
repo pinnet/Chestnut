@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 95266170899245098}
   - component: {fileID: 114051447137070532}
   - component: {fileID: 114605815453399084}
+  - component: {fileID: 114788992596052756}
+  - component: {fileID: 114714425994852148}
   m_Layer: 8
   m_Name: Chess Board
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988831263098760}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 21, y: -0.001, z: 21}
+  m_LocalPosition: {x: 21, y: -0.03, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,9 +130,10 @@ MonoBehaviour:
     type: 2}
   blackRook: {fileID: 1016572730181752, guid: 56c15cd22784d0b4c9aeace8c1ba7783, type: 2}
   blackPawn: {fileID: 1060468728924604, guid: 6823d1302e972a94a91054416dbc4062, type: 2}
-  whiteQuad: {fileID: 1973600864346216, guid: 045dc20d35ce11042ade11ab8b834266, type: 2}
-  blackQuad: {fileID: 1667078235858308, guid: f69f9125ef066d241aa6d05b69a41d1e, type: 2}
+  whiteQuad: {fileID: 1667078235858308, guid: f69f9125ef066d241aa6d05b69a41d1e, type: 2}
+  blackQuad: {fileID: 1973600864346216, guid: 045dc20d35ce11042ade11ab8b834266, type: 2}
   yourPieces: {fileID: 0}
+  Upated: 0
 --- !u!114 &114605815453399084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,3 +147,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorHotspot: {x: 0, y: 0}
   cursorTexture: {fileID: 0}
+--- !u!114 &114714425994852148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: OnDragEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: OnDragEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!114 &114788992596052756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988831263098760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a9336da928d7742b2d57ce1cf7c803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  integers: []
+  vectors: []
+  objects: []

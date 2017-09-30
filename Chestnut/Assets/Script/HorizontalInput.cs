@@ -15,7 +15,7 @@ public class HorizontalInput : MonoBehaviour {
 
     public void OnDragStart()
     {
-        _dragOn = true;
+        _dragOn = true;  // (Input.mousePosition.y < 50);
        
     }
     public void OnDragEnd()
@@ -30,23 +30,25 @@ public class HorizontalInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-           
-        if (Input.GetMouseButton(2) || _dragOn)
-        {
+
+          
+            if (Input.GetMouseButton(2) || _dragOn)
+            {
                
-            float y = Input.GetAxis("Mouse X");
-            y = y * (MouseRotationSpeed * Time.deltaTime);
-            transform.Rotate(0, y, 0);
- 
-        }
-        else if(Input.anyKeyDown)
-        {
-            float y = Input.GetAxis("Horizontal");
-            y = y * (RotationSpeed * Time.deltaTime);
-            transform.Rotate(0, y, 0);
-        }
+                    float y = Input.GetAxis("Mouse X");
+                    y = y * (MouseRotationSpeed * Time.deltaTime);
+                    transform.Rotate(0, y, 0);
+                
+
+            }
+           else if (Input.anyKeyDown)
+           {
+               float y = Input.GetAxis("Horizontal");
+               y = y * (RotationSpeed * Time.deltaTime);
+               transform.Rotate(0, y, 0);
+           }
     }
+
     public void RotateToWhite(bool isWhite) {
 
         if(isWhite) transform.eulerAngles = new Vector3(0,0f,0);
