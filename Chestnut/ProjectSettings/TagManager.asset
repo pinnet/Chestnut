@@ -10,6 +10,7 @@ TagManager:
   - Quad
   - Black
   - White
+  - Canvas
   layers:
   - Default
   - TransparentFX

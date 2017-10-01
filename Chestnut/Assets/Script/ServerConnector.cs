@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ServerConnector : MonoBehaviour {
-    [SerializeField]
-    Text text;
+
+   
+
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -13,7 +14,9 @@ public class ServerConnector : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-		
+
+       
+       
 	}
 	
 	// Update is called once per frame

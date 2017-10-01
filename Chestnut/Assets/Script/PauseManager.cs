@@ -5,15 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour{
+
    
+    
+    
 
-
-    Canvas canvas;
+    Canvas pauseCanvas;
+    Canvas serverCanvas;
 
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        canvas.enabled = false;
+        pauseCanvas = GetComponent<Canvas>();
+        pauseCanvas.enabled = false;
+
+        serverCanvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+        serverCanvas.enabled = false;
     }
 
     void Update()
@@ -26,7 +32,8 @@ public class PauseManager : MonoBehaviour{
 
     public void Pause()
     {
-        canvas.enabled = !canvas.enabled;
+        pauseCanvas.enabled = !pauseCanvas.enabled;
+        serverCanvas.enabled = pauseCanvas.enabled;
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 

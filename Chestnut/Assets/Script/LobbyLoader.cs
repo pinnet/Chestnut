@@ -1,25 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LobbyLoader : MonoBehaviour {
+    
+    [SerializeField]
+    Slider AsyncSlider;
 
 
-    public void OnClick() {
+    float lastProgress = 0;
+    AsyncOperation operation;
 
-        SceneManager.LoadScene(1);
+    public void NextScene() {
 
 
+        if (operation != null)
+        operation.allowSceneActivation = true;
 
     }
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine(AsyncLoad(1));
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Update()
+    {
+        //if (operation.isDone) PlayButton.enabled = true;
+    }
+
+    IEnumerator AsyncLoad(int index) {
+
+        operation = SceneManager.LoadSceneAsync(index);
+        operation.allowSceneActivation = false;
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            
+            AsyncSlider.value = progress;
+           
+            yield return null;
+        }
+            
+        
+    }
 }
