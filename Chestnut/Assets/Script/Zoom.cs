@@ -12,11 +12,31 @@ public class Zoom : MonoBehaviour {
     void Start () {
 	 cam = GetComponent<Camera>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-       if (Input.GetAxis("Mouse ScrollWheel") > 0) zoom ++ ;
-       if (Input.GetAxis("Mouse ScrollWheel") < 0) zoom -- ;
+    protected bool _dragOn = false;
+    public void OnDragStart()
+    {
+        _dragOn = true;  // (Input.mousePosition.y < 50);
+
+    }
+    public void OnDragEnd()
+    {
+        _dragOn = false;
+
+    }
+    // Update is called once per frame
+    void Update () {
+
+        if (Input.GetMouseButton(1) || _dragOn)
+        {
+            float y = Input.GetAxis("Mouse Y");
+            if (y > 0) zoom++;
+            if (y < 0) zoom--;
+        }
+        else
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0) zoom++;
+            if (Input.GetAxis("Mouse ScrollWheel") < 0) zoom--;
+        }
        zoom = Mathf.Clamp(zoom,15,80);
        cam.fieldOfView = zoom;
     }

@@ -9,7 +9,7 @@ public class ServerConnector : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+       
     }
     
     // Use this for initialization

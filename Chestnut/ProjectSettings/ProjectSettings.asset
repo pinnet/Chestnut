@@ -603,8 +603,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 43cfa1e1-54f8-4184-bbe1-e4c8e102471b
-  projectName: Chestnut (1)
+  cloudProjectId: b58e7306-2c02-457a-8d79-3cfc7742fb8a
+  projectName: Chestnut
   organizationId: dadc
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
