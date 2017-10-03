@@ -91,7 +91,7 @@ public class Board : MonoBehaviour {
         con.STDIN = "Start Game <Board.cs>";
         con.STDIN = myGUID.ToString();
 
-        FENString.ParseString("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2");
+        FENString.ParseString("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq c6 0 2");
         captured = yourPieces;
 
         if (FENString.isValid)
