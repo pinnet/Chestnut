@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class UCIWindow : MonoBehaviour {
 
-
+    private bool _hidden = true;
     Animator ani;
 
-    public void HideConsole(bool yes)
+    public void ToggleConsole()
     {
-
-        ani.SetBool("HideConsole",yes);
+        _hidden = !_hidden;
+        ani.SetBool("HideConsole", _hidden);
 
     }
+
     private void Start()
     {
         ani = GetComponent<Animator>();
+        ani.SetBool("HideConsole", _hidden);
     }
     private void Update()
     {
         if (Input.GetKeyDown("c"))
         {
-            ani.SetBool("HideConsole", false);
+            ToggleConsole();
         }
     }
 }
