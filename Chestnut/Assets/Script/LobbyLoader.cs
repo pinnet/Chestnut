@@ -10,7 +10,7 @@ public class LobbyLoader : MonoBehaviour {
     Slider AsyncSlider;
 
 
-    float lastProgress = 0;
+
     AsyncOperation operation;
 
     public void NextScene() {
