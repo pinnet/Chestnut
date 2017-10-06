@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Chestnut</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/unityout.json");
+    </script>
+
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body class="no-select">
+  	
+  <h1 id="fb-welcome"></h1>
+  
+<script>
+  window.fbAsyncInit = function() {
+  	
+    	FB.init({
+     		appId      : '151364752123710',
+      		xfbml      : true,
+      		version    : 'v2.10'
+    	});
+
+    	function onLogin(response) {
+  			if (response.status == 'connected') {
+    			FB.api('/me?fields=first_name', function(data) {
+      				localStorage.setItem('Name',data.first_name );
+    				});
+  			}
+		}
+
+		FB.getLoginStatus(function(response) {
+  		
+  			if (response.status == 'connected') {
+    			onLogin(response);
+  			} 
+  			else {
+  			    FB.login(function(response) {
+      				onLogin(response);
+      			},{scope: 'user_friends, email'});
+  			}
+  		});
+};
+
+(function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+	}
+	(document, 'script', 'facebook-jssdk')
+);
+
+
+</script>
+
+  <table style="width: 25%" align="center">
+			<tr>
+				<td class="auto-style3" style="height: 81px" >
+				<span class="auto-style2" lang="en-gb">Welcome to Chestnut 
+				Online</span></td>
+			</tr>
+			<tr>
+				<td>				</td>
+			</tr>
+			<tr>
+				<td class="auto-style1">
+				<table style="width: 100%; height: 100%;" class="auto-style9">
+						<tr>
+							<td style="width: 100%" valign="top" class="auto-style8">
+							</td>
+							<td>		
+								<div id="gameContainer" style="padding: 10px; width: 600px; height: 400px; margin: auto; color: #CED2AB;">
+								</div>
+							</td>
+						</tr>
+					</table>  
+		</td>
+			</tr>
+			<tr>
+				<td style="width: 943px" class="auto-style5">
+				<span class="auto-style6" lang="en-gb">dannyarnold.com (C) 2017</span></td>
+			</tr>
+		</table>
+  
+  </body>
+</html>

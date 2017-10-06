@@ -8,19 +8,28 @@ using UnityEngine.Networking;
 public class autoStart : MonoBehaviour {
 
     [DllImport("__Internal")]
-    private static extern void Hello();
-
+    private static extern string GetName();
+    private GameObject player;
+    private string Firstname = "Unknown";
     // Use this for initialization
     void Start () {
         
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
-                Hello();
+                Firstname = GetName();
+                
+                
+                
             }
             else if (Application.platform == RuntimePlatform.LinuxPlayer)
             {
-                GetComponent<NetworkLobbyManager>().StartServer();
+                //GetComponent<NetworkLobbyManager>().StartServer();
             }
+
+
+        player = new GameObject(Firstname);
+        player.AddComponent<Player>().FirstName = Firstname;
+        
     }
 	
 	// Update is called once per frame

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Board : MonoBehaviour {
 
 
-
+   
     [SerializeField]
     GameObject whiteKing;
     [SerializeField]

@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour{
 
-   
-    
+
+    [SerializeField]
+    Button Play;
     
 
     Canvas pauseCanvas;
@@ -16,10 +17,11 @@ public class PauseManager : MonoBehaviour{
     void Start()
     {
         pauseCanvas = GetComponent<Canvas>();
-        pauseCanvas.enabled = false;
+        pauseCanvas.enabled = true;
 
         serverCanvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
-        serverCanvas.enabled = false;
+        serverCanvas.enabled = true;
+        Play.gameObject.SetActive(false);
     }
 
     void Update()

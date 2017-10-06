@@ -19,10 +19,12 @@
 
     GetName: function () {
         
-        var returnStr = localStorage.getItem('Name');
-        var buffer = _malloc(lengthBytesUTF8(returnStr) + 1);
-        writeStringToMemory(returnStr, buffer);
-        return buffer;
+            var returnStr = localStorage.getItem('Name');
+ 
+            if (returnStr.length == 0) return null;
+            var buffer = _malloc(lengthBytesUTF8(returnStr) + 1);
+            writeStringToMemory(returnStr, buffer);
+            return buffer;
     },
 
     BindWebGLTexture: function (texture) {
