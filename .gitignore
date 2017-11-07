@@ -23,6 +23,7 @@ ExportedObj/
 *.booproj
 *.unitypackage
 *.apk
+*.pem
 
 # ============ #
 # OS generated #
