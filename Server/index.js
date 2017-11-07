@@ -1,20 +1,60 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const express = require('express');
+const hbs = require('hbs');
+const fs = require('fs');
+const port = process.env.PORT || 3000;
+var maintenanceMode = false;
 
-server.listen(3000);
-app.get('/', function (req, res) {
-    res.send('ack2 "/" ');
+var app = express();
+hbs.registerPartials(__dirname + '/views/partials');
+app.set('view engine','hbs');
 
-});
 
-io.on('connection', function (socket) {
-    socket.emit('message', { hello: 'world' });
-    socket.on('message', function (data) {
-        console.log(data);
+app.use((req,res,next) =>{
+
+    var now = new Date().toString();
+    var log = `${now}: ${req.method} : ${req.url} `;
+
+    fs.appendFile('server.log', log + '\n' , (err) =>{
+        if (err){   
+        console.log('Unable to append to server log' + err);
+        }
     });
-
+    next();
 });
+if (maintenanceMode) {
+    app.use((req,res,next) =>{
+        res.render('maintenance.hbs'); 
+    });  
+}
+app.use(express.static(__dirname + '/public'));
 
-console.log('----------------- Listen');
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+});
+hbs.registerHelper('screamIt', (text) => {
+    return text.toUpperCase();
+});
+app.get('/', (req,res) => {
+    res.render('home.hbs',{
+        pageTitle: 'My Home Page',
+        welcomeMessage: 'Welcome to my web site'
+    });
+});
+app.get('/projects', (req,res) => {
+    res.render('projects.hbs',{
+        pageTitle: 'My Project Page',
+        welcomeMessage: 'Projects Page Content'
+    });
+});
+app.get('/about', (req,res)=> {
+    res.render('about.hbs',{
+        pageTitle: 'About',
+    });
+})
+app.get('/bad', (req,res) => {
 
+    res.send({ errorMessage : 'BAD DATA'});
+})
+app.listen(port, () =>{
+    console.log(`Starting server on port ${port}`);
+});
