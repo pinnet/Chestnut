@@ -1,4 +1,4 @@
-﻿/*************************************************************************
+/*************************************************************************
  *
  *  dannyarnold.com 2017
  *  All Rights Reserved.
@@ -13,27 +13,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from dannyarnold.com.
  *
+ *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  *
  */
-
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class KeyControl : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-#if !UNITY_EDITOR && UNITY_WEBGL
-WebGLInput.captureAllKeyboardInput = false;
-#endif
-    }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
-}
